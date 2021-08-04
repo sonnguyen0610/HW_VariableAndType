@@ -42,27 +42,42 @@ public class App {
         //Bai 8: Nhập bán kính đường tròn. Tính chu vi & diện tích
         System.out.println("Bài 8:");
         final double PI = 3.14;
-        int banKinh=4;
-        double chuVi= 2*banKinh*PI;
-        double dienTich=banKinh*banKinh*PI;
-        System.out.println("Chu vi: "+chuVi+"\tDien tich: "+dienTich);
+        int banKinh = 4;
+        double chuVi = 2 * banKinh * PI;
+        double dienTich = banKinh * banKinh * PI;
+        System.out.println("Chu vi: " + chuVi + "\tDien tich: " + dienTich);
         System.out.println("-------------");
         //Bai 9: Nhập vào số xe (tối đa 5 chữ số). Tính số nút
         System.out.println("Bài 9:");
-        long soXe=05677;
-
+        String soXe = "99999";
+        System.out.println("Số xe: " + soXe);
+        int nut;
+        int tongNut = 0;
+        for (int i = 0; i <= soXe.length() - 1; i++) {
+            nut = Integer.parseInt(String.valueOf(soXe.charAt(i)));
+//            System.out.println(nut);
+            tongNut = tongNut + nut;
+        }
+        System.out.println("Tong so nut la: " + tongNut);
+        if (tongNut > 10) {
+            String stringTongNut = String.valueOf(tongNut);
+            char kq = stringTongNut.charAt(stringTongNut.length() - 1);
+            System.out.println("Kết quả là: " + kq);
+        } else {
+            System.out.println("Kết quả là: " + tongNut);
+        }
         System.out.println("-------------");
         //Bai 10: Nhập 2 số nguyên. Tính min & max
         System.out.println("Bài 10:");
-        int num1=20;
-        int num2=21;
-        System.out.println("Số a= "+num1+"\tSố b= "+num2);
-        if(num1>num2){
-            System.out.println("Số "+num1+" là max");
-            System.out.println("Số "+num2+" là min");
-        }else{
-            System.out.println("Số "+num1+" là min");
-            System.out.println("Số "+num2+" là max");
+        int num1 = 20;
+        int num2 = 21;
+        System.out.println("Số a= " + num1 + "\tSố b= " + num2);
+        if (num1 > num2) {
+            System.out.println("Số " + num1 + " là max");
+            System.out.println("Số " + num2 + " là min");
+        } else {
+            System.out.println("Số " + num1 + " là min");
+            System.out.println("Số " + num2 + " là max");
         }
         System.out.println("-------------");
     }
