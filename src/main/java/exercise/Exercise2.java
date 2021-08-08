@@ -58,7 +58,7 @@ public class Exercise2 {
         int year = sc.nextInt();
         ex.bai_8_DayInMonth(month, year);
         //Bài 9
-//        System.out.print("Xét có phải tap giác không?" + "\nNhập cạnh 1: ");
+//        System.out.print("Xét có phải tam giác không?" + "\nNhập cạnh 1: ");
 //        String a = sc.nextLine();
 //        System.out.print("Nhập cạnh 2: ");
 //        String b = sc.nextLine();
@@ -72,34 +72,34 @@ public class Exercise2 {
         String str;
         switch (anyNum) {
             case 1:
-                str = "Số 1";
+                str = "One";
                 break;
             case 2:
-                str = "Số 2";
+                str = "Two";
                 break;
             case 3:
-                str = "Số 3";
+                str = "Three";
                 break;
             case 4:
-                str = "Số 4";
+                str = "Four";
                 break;
             case 5:
-                str = "Số 5";
+                str = "Five";
                 break;
             case 6:
-                str = "Số 6";
+                str = "Six";
                 break;
             case 7:
-                str = "Số 7";
+                str = "Seven";
                 break;
             case 8:
-                str = "Số 8";
+                str = "Eight";
                 break;
             case 9:
-                str = "Số 9";
+                str = "Nine";
                 break;
             default:
-                str = "Không đọc được!";
+                str = "Can not read!";
                 break;
         }
         System.out.println(str);
@@ -109,7 +109,7 @@ public class Exercise2 {
         String anyCase;
         char[] arrAnyChar = anyChar.toCharArray();
         if (arrAnyChar.length > 1) {
-            System.out.println("Nhập 1 lý tự");
+            System.out.println("Enter a letter");
         } else {
             for (int a = 0; a < arrAnyChar.length; a++) {
                 if (Character.isUpperCase(arrAnyChar[a])) {
@@ -125,7 +125,7 @@ public class Exercise2 {
                         }
                     }
                 } else {
-                    System.out.println("Nhập chữ hoa hoặc thường");
+                    System.out.println("Enter a letter");
 
                 }
             }
@@ -201,7 +201,7 @@ public class Exercise2 {
         } else {
             System.out.println("Cannot charge");
         }
-        System.out.print("Số tiền phải trả: " + result);
+        System.out.print("The total money have to pay: " + result);
     }
 
     public void bai_8_DayInMonth(int month, int year) {
