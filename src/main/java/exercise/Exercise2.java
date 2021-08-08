@@ -51,6 +51,12 @@ public class Exercise2 {
 //        System.out.print("Nhập số km: ");
 //        String km = sc.nextLine();
 //        ex.bai_7_TaxiMoney(Integer.parseInt(km));
+        //Bài 8
+//        System.out.print("How many days in the month? \nEnter month: ");
+//        int month = sc.nextInt();
+//        System.out.print("Enter year: ");
+//        int year = sc.nextInt();
+//        ex.bai_8_DayInMonth(month, year);
         //Bài 9
 //        System.out.print("Xét có phải tap giác không?" + "\nNhập cạnh 1: ");
 //        String a = sc.nextLine();
@@ -196,6 +202,33 @@ public class Exercise2 {
             System.out.println("Cannot charge");
         }
         System.out.print("Số tiền phải trả: " + result);
+    }
+
+    public void bai_8_DayInMonth(int month, int year) {
+        if (month >= 1 & month <= 12) {
+            if (year < 1) {
+                System.out.println("Input valid year, please!");
+            } else {
+                switch (month) {
+                    case 1,3,5,7,8,10,12:
+                        System.out.println("Have 31 days in month");
+                        break;
+                    case 4,6,9,11:
+                        System.out.println("Have 30 days in month");
+                        break;
+                    case 2:
+                        if ((year % 4) == 0) {
+                            System.out.println("Have 29 days in month");
+                            break;
+                        } else {
+                            System.out.println("Have 28 days in month");
+                            break;
+                        }
+                }
+            }
+        } else {
+            System.out.println("Input valid month, please!");
+        }
     }
 
     public void bai_9_Tamgiac(double a, double b, double c) {
