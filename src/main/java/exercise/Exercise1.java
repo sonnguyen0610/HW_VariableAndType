@@ -1,4 +1,6 @@
-public class App {
+package exercise;
+
+public class Exercise1 {
     public static void main(String[] args) {
         //Bai 4: Nhập năm sinh của 1 người +tính tuổi
         int birthY = 1999;
