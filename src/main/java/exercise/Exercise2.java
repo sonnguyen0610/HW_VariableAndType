@@ -3,9 +3,9 @@ package exercise;
 import java.util.Scanner;
 
 public class Exercise2 {
-    public static void main(String[] args) {
-        Exercise2 ex = new Exercise2();
-        Scanner sc = new Scanner(System.in);
+//    public static void main(String[] args) {
+//        Exercise2 ex = new Exercise2();
+//        Scanner sc = new Scanner(System.in);
         //Bài 1
 //        System.out.print("Nhập số: ");
 //        String anyNum = sc.nextLine();
@@ -52,11 +52,11 @@ public class Exercise2 {
 //        String km = sc.nextLine();
 //        ex.bai_7_TaxiMoney(Integer.parseInt(km));
         //Bài 8
-        System.out.print("How many days in the month? \nEnter month: ");
-        int month = sc.nextInt();
-        System.out.print("Enter year: ");
-        int year = sc.nextInt();
-        ex.bai_8_DayInMonth(month, year);
+//        System.out.print("How many days in the month? \nEnter month: ");
+//        int month = sc.nextInt();
+//        System.out.print("Enter year: ");
+//        int year = sc.nextInt();
+//        ex.bai_8_DayInMonth(month, year);
         //Bài 9
 //        System.out.print("Xét có phải tam giác không?" + "\nNhập cạnh 1: ");
 //        String a = sc.nextLine();
@@ -66,7 +66,7 @@ public class Exercise2 {
 //        String c = sc.nextLine();
 //        ex.bai_9_Tamgiac(Double.valueOf(a), Double.valueOf(b), Double.valueOf(c));
 
-    }
+//    }
 
     public void bai_1(int anyNum) {
         String str;

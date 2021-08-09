@@ -3,23 +3,23 @@ package exercise;
 import java.util.Scanner;
 
 public class Exercise3 {
-    public static void main(String[] args) {
-        Exercise3 ex = new Exercise3();
-        Scanner sc = new Scanner(System.in);
-        //Bài 1
+//    public static void main(String[] args) {
+//        Exercise3 ex = new Exercise3();
+//        Scanner sc = new Scanner(System.in);
+//        //Bài 1
+////        String year = sc.nextLine();
+////        ex.Bai_1_isLeapYear(Integer.parseInt(year));
+//        //Bài 2
+//        System.out.print("Day: ");
+//        String day = sc.nextLine();
+//        System.out.print("Month: ");
+//        String month = sc.nextLine();
+//        System.out.print("Year: ");
 //        String year = sc.nextLine();
-//        ex.Bai_1_isLeapYear(Integer.parseInt(year));
-        //Bài 2
-        System.out.print("Day: ");
-        String day = sc.nextLine();
-        System.out.print("Month: ");
-        String month = sc.nextLine();
-        System.out.print("Year: ");
-        String year = sc.nextLine();
-        ex.bai_2_isValid(Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
-        ex.bai_2_nextDay(Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
-        ex.bai_2_lastDay(Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
-    }
+//        ex.bai_2_isValid(Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
+//        ex.bai_2_nextDay(Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
+//        ex.bai_2_lastDay(Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
+//    }
 
     public void Bai_1_isLeapYear(int year) {
         if ((year % 4) == 0 & (year % 100) != 0) {
@@ -65,7 +65,7 @@ public class Exercise3 {
         }
     }
     public void bai_2_nextDay(int day, int month, int year) {
-        String nextDay = null, lastDay = null;
+        String nextDay = null;
         switch (month) {
             case 1, 3, 5, 7, 8, 10, 12://tháng có 31 ngày
                 if (day >= 1 & day <= 31) {
