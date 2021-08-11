@@ -3,10 +3,10 @@ package exercise;
 import java.util.Scanner;
 
 public class Exercise4 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Nhập n: ");
-        int num = sc.nextInt();
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//        System.out.print("Nhập n: ");
+//        int num = sc.nextInt();
 
 //        int n = sc.nextInt();
 //        if (isPrimeNumber(n)) {
@@ -15,11 +15,11 @@ public class Exercise4 {
 //            System.out.format("%d KHÔNG PHẢI số nguyên tố. \n", n);
 //        }
         //Bài 1 a:
-        if (isDoiXung(num)) {
-            System.out.println("Là số đối xứng");
-        } else {
-            System.out.println("Không là số đối xứng");
-        }
+//        if (isDoiXung(num)) {
+//            System.out.println("Là số đối xứng");
+//        } else {
+//            System.out.println("Không là số đối xứng");
+//        }
         //Bài 1 b:
 //        if (isSquareNumber(num)) {
 //            System.out.println(num + " Là số chính phương");
@@ -35,7 +35,7 @@ public class Exercise4 {
         //Bài 5:
 //        System.out.println("Đảo ngược của "+num+" là "+reverseNumber(num));
 
-    }
+//    }
 
     public static int sum2a(int n) {
         int s = 0;
