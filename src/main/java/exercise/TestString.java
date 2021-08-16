@@ -1,6 +1,5 @@
 package exercise;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class TestString {
@@ -32,9 +31,9 @@ public class TestString {
 //        System.out.println("Số lượng ký tự là: " + countChar(s));
 
         //Bài 7
-//        System.out.print("Nhập chuỗi s: ");
-//        String s = sc.nextLine();
-//        countConsonantVowel(s);
+        System.out.print("Nhập chuỗi s: ");
+        String s = sc.nextLine();
+        countConsonantVowel(s);
     }
 
     //in ra các ký tự in hoa
@@ -73,20 +72,20 @@ public class TestString {
 
     //đếm số ượng nguyên am, phụ âm
     public static void countConsonantVowel(String s) {
-        int countNguyen = 0;
-        int countPhu = 0;
+        int countVowel = 0;
+        int countConsonant = 0;
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (Character.isDigit(s.charAt(i))) {
                 continue;
-            } else if (c == 'a' || c == 'o' || c == 'e' || c == 'u' || c == 'i') {
-                countNguyen++;
+            } else if (c == 'a' || c == 'o' || c == 'e' || c == 'u' || c == 'i'||c == 'A' || c == 'O' || c == 'E' || c == 'U' || c == 'I') {
+                countVowel++;
             } else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
-                countPhu++;
+                countConsonant++;
             }
         }
-        System.out.println("Số lượng ký tự nguyên âm là: " + countNguyen);
-        System.out.println("Số lượng ký tự phụ âm là: " + countPhu);
+        System.out.println("Số lượng ký tự nguyên âm là: " + countVowel);
+        System.out.println("Số lượng ký tự phụ âm là: " + countConsonant);
     }
 
 }
