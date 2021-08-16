@@ -19,11 +19,16 @@ public class TestArray {
 //        int[] generteArray = generteArray(20, 5, 10);
 //        printArray(generteArray);
         //
-        int[] arr = {4, 8, 5, 2};
-        if (isAllEven(arr)) {
-            System.out.println("mảng chẳn");
-        } else System.out.println("mảng không chẳn");
-
+        int[] arr = {4, 8, -5, 2, -1, 4, -9};
+//        if (isAllEven(arr)) {
+//            System.out.println("mảng chẳn");
+//        } else System.out.println("mảng không chẳn");
+//        System.out.println("Max: " + findMax(arr)+", Index: "+findMaxIndex(arr));
+//        System.out.println("Min: " + findMin(arr));
+        System.out.format("Find first Negative Index=%d\n", findFirstNegativeIndex(arr));
+        System.out.format("Find Last Positive Index=%d\n", findLastPositiveIndex(arr));
+        System.out.format("Find Min Positive Index=%d\n", findMinPosIndex(arr));
+        System.out.format("Find Max Negative Index=%d\n", findMaxNegIndex(arr));
 
     }
 
@@ -75,5 +80,77 @@ public class TestArray {
             }
         }
         return true;
+    }
+
+    public static int findMax(int[] arr) {
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    public static int findMin(int[] arr) {
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+
+    public static int findMaxIndex(int[] arr) {
+        int max = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[max]) {
+                max = i;
+            }
+        }
+        return max;
+    }
+
+    public static int findFirstNegativeIndex(int[] ar) {
+        for (int i = 0; i < ar.length; i++) {
+            if (ar[i] < 0) {
+                return i;
+            }
+        }
+        return -1;//không có phần tử âm
+    }
+
+    public static int findLastPositiveIndex(int[] arr) {
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] > 0) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int findMinPosIndex(int[] arr) {
+        int lastPosIndex = findLastPositiveIndex(arr);
+        if (lastPosIndex < 0) {
+            return -1;
+        }
+        int minPost = lastPosIndex;
+        for (int i = lastPosIndex - 1; i >= 0; i--) {
+            if (arr[i] > 0 && arr[i] < minPost) {
+                minPost = i;
+            }
+        }
+        return minPost;
+    }
+
+    public static int findMaxNegIndex(int[] arr) {
+        int maxNegIdx = -1;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < 0 && (maxNegIdx == -1 || arr[i] > arr[maxNegIdx])) {
+                maxNegIdx = i;
+            }
+        }
+        return maxNegIdx;
     }
 }
