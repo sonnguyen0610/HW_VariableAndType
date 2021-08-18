@@ -3,8 +3,8 @@ package exercise;
 import java.util.Scanner;
 
 public class TestString {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
         //Bài 1
 //        System.out.print("Nhập chuỗi s: ");
 //        String s = sc.nextLine();
@@ -31,10 +31,10 @@ public class TestString {
 //        System.out.println("Số lượng ký tự là: " + countChar(s));
 
         //Bài 7
-        System.out.print("Nhập chuỗi s: ");
-        String s = sc.nextLine();
-        countConsonantVowel(s);
-    }
+//        System.out.print("Nhập chuỗi s: ");
+//        String s = sc.nextLine();
+//        countConsonantVowel(s);
+//    }
 
     //in ra các ký tự in hoa
     public static String printUppercaseInString(String s) {
@@ -78,7 +78,7 @@ public class TestString {
             char c = s.charAt(i);
             if (Character.isDigit(s.charAt(i))) {
                 continue;
-            } else if (c == 'a' || c == 'o' || c == 'e' || c == 'u' || c == 'i'||c == 'A' || c == 'O' || c == 'E' || c == 'U' || c == 'I') {
+            } else if (c == 'a' || c == 'o' || c == 'e' || c == 'u' || c == 'i' || c == 'A' || c == 'O' || c == 'E' || c == 'U' || c == 'I') {
                 countVowel++;
             } else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
                 countConsonant++;
