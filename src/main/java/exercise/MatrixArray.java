@@ -9,15 +9,26 @@ public class MatrixArray {
 //        printMatrix(b);
 //        int sum = sumEleMatrix(b);
 //        System.out.format("SUM = %d\n", sum);
+
+        //Tính tổng trên các dòng
+//        int[][] m = generateMatrix(3, 3, 2, 5);
+//        printMatrix(m);
+//        int [] sumR=sumRowInMatrix(m);
+//        System.out.print("Tổng các dòng lần lượt là: ");
+//        for(int i:sumR){
+//            System.out.print(i+"\t");
+//        }
         //Bài 1
 //        int[][] b = generateMatrix(3, 3, 2, 5);
 //        printMatrix(b);
 //        Scanner sc = new Scanner(System.in);
 //        System.out.print("Nhập X cần tìm: ");
 //        int x = sc.nextInt();
-//        int[] isCon = isContain(b, x);
-//        for (int i : isCon) {
-//            System.out.print("Vị trí: " + i);
+//        if(findX(b,x)){
+//            System.out.print(" là vị trí đầu tiên của "+x);
+//        }else {
+//            System.out.println(" Không tìm được "+x);
+//
 //        }
         //Bài 2
 //        int[][] primeMatrix = {{3, 3, 5}, {5, 7, 11}};
@@ -27,11 +38,104 @@ public class MatrixArray {
 //        } else {
 //            System.out.println("Không là mtran toàn số nguyên tố");
 //        }
-        //bài 3
+        //Bài 3
+//        int[][] c = generateMatrix(3, 3, 2, 5);
+//        printMatrix(c);
+//        System.out.println("MAX của mảng là: " + maxEleMatrix(c));
+
+        /*Bài 4 Cho trước ma trận a, kích thước m x n. Tính tổng các phần tử trên:
+        a. Dòng d, cột c
+        b. Đường chéo chính, đường chéo phụ (ma trận vuông)
+        c. Nửa trên/dưới đường chéo chính (ma trận vuông)
+        d. Nửa trên/dưới đường chéo phụ (ma trận vuông)*/
         int[][] c = generateMatrix(3, 3, 2, 5);
         printMatrix(c);
-        System.out.println("MAX của mảng là: " + maxEleMatrix(c));
+        Scanner sc = new Scanner(System.in);
 
+        //Tính tổng trên dòng
+//        System.out.print("Nhap dong can tinh tong: ");
+//        int x = sc.nextInt();
+//        System.out.format("Tổng tren dong: " + sumRowX(c, (x-1)));
+        //Tính tổng trên cột c
+//        System.out.print("Nhap cot can tinh tong: ");
+//        int x = sc.nextInt();
+//        System.out.format("Tổng tren cot: " + sumColX(c, (x - 1)));
+        //Tính tổng đường chéo chính
+//        System.out.println("Tổng đường chéo chính: " + sumDuongCheoChinh(c));
+        //Tính tổng đường chéo phụ
+        System.out.println("Tổng đường chéo phụ: " + sumDuongCheoPhu(c));
+
+    }
+    //Tinhs tổng đường chéo phụ
+    public static int sumDuongCheoPhu(int[][] a) {
+        int sum = 0;
+        int r = a.length;
+        int c = a[0].length;
+        if (r == c) {
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) {
+
+                }
+            }
+        } else {
+            System.out.println("Khong phai ma tran vuong!");
+        }
+        return sum;
+    }
+    //Tinhs tổng đường chéo chính
+    public static int sumDuongCheoChinh(int[][] a) {
+        int sum = 0;
+        int r = a.length;
+        int c = a[0].length;
+        if (r == c) {
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) {
+                    if (i == j) {
+                        sum += a[i][j];
+                    }
+                }
+            }
+        } else {
+            System.out.println("Khong phai ma tran vuong!");
+        }
+        return sum;
+    }
+
+    //Tính tổng phần tử trên cot X
+    public static int sumColX(int[][] a, int x) {
+        int sum = 0;
+        for (int i = 0, r = a.length; i < r; i++) {
+            for (int j = 0, c = a[0].length; j < c; j++) {
+                if (j == x) {
+                    sum += a[i][j];
+                }
+            }
+        }
+        return sum;
+    }
+
+    //Tính tổng phần tử trên dong X
+    public static int sumRowX(int[][] a, int x) {
+        int sum = 0;
+        for (int i = 0, r = a.length; i < r; i++) {
+            for (int j = 0, c = a[0].length; j < c; j++) {
+                if (i == x) {
+                    sum += a[i][j];
+                }
+            }
+        }
+        return sum;
+    }
+
+    //Tính tổng phần tử trên các dòng
+    public static int[] sumRowInMatrix(int[][] a) {
+        int[] sum = new int[a.length];
+        for (int i = 0, r = a.length; i < r; i++) {
+            for (int j = 0, c = a[0].length; j < c; j++) {
+                sum[i] += a[i][j];
+            }
+        }
+        return sum;
     }
 
     public static int maxEleMatrix(int[][] a) {
@@ -59,20 +163,16 @@ public class MatrixArray {
         return true;
     }
 
-
-    public static int[] isContain(int[][] a, int x) {
-        int row = 0;
-        int col = 0;
+    public static boolean findX(int[][] a, int x) {
         for (int i = 0, r = a.length; i < r; i++) {
             for (int j = 0, c = a[0].length; j < c; j++) {
-                if (x == a[i][j]) {
-                    row = i;
-                    col = i;
+                if (a[i][j] == x) {
+                    System.out.format("a[%d][%d]", i, j);
+                    return true;
                 }
             }
         }
-        int[] arr = {row, col};
-        return arr;
+        return false;
     }
 
     public static int[][] inputMatrix() {
