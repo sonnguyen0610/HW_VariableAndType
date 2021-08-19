@@ -47,7 +47,12 @@ public class MatrixArray {
         a. Dòng d, cột c
         b. Đường chéo chính, đường chéo phụ (ma trận vuông)
         c. Nửa trên/dưới đường chéo chính (ma trận vuông)
-        d. Nửa trên/dưới đường chéo phụ (ma trận vuông)*/
+        d. Nửa trên/dưới đường chéo phụ (ma trận vuông)
+        a[0][0] a[0][1] a[0][2] a[0][3]
+        a[1][0] a[1][1] a[1][2] a[1][3]
+        a[2][0] a[2][1] a[2][2] a[2][3]
+        a[3][0] a[3][1] a[3][2] a[3][3]
+        */
         int[][] c = generateMatrix(3, 3, 2, 5);
         printMatrix(c);
         Scanner sc = new Scanner(System.in);
@@ -60,21 +65,110 @@ public class MatrixArray {
 //        System.out.print("Nhap cot can tinh tong: ");
 //        int x = sc.nextInt();
 //        System.out.format("Tổng tren cot: " + sumColX(c, (x - 1)));
-        //Tính tổng đường chéo chính
-//        System.out.println("Tổng đường chéo chính: " + sumDuongCheoChinh(c));
-        //Tính tổng đường chéo phụ
-        System.out.println("Tổng đường chéo phụ: " + sumDuongCheoPhu(c));
 
+        //Tính tổng đường chéo chính
+//        System.out.println("Tổng đường chéo chính: " + tongDuongCheoChinh(c));
+        //Tính tổng đường chéo phụ
+//        System.out.println("Tổng đường chéo phụ: " + tongDuongCheoPhu(c));
+
+        //Tính tổng nữa trên đường chéo chính
+//        System.out.println("Tổng nữa trên đường chéo chính: " + tongNuaTrenChinh(c));
+        //Tính tổng nữa trên đường chéo chính
+//        System.out.println("Tổng nữa dưới đường chéo chính: " + tongNuaDuoiChinh(c));
+
+        //Tính tổng nữa trên đường chéo phụ
+        System.out.println("Tổng nữa trên đường chéo chính: " + tongNuaTrenPhu(c));
+        //Tính tổng nữa trên đường chéo phụ
+        System.out.println("Tổng nữa dưới đường chéo chính: " + tongNuaDuoiPhu(c));
     }
-    //Tinhs tổng đường chéo phụ
-    public static int sumDuongCheoPhu(int[][] a) {
+
+    //Tính tổng nữa trên đường chéo phụ
+    private static int tongNuaDuoiPhu(int[][] a) {
         int sum = 0;
         int r = a.length;
         int c = a[0].length;
         if (r == c) {
             for (int i = 0; i < r; i++) {
                 for (int j = 0; j < c; j++) {
+                    if ((i + j) > (r - 1)) {
+                        sum += a[i][j];
+                    }
+                }
+            }
+        } else {
+            System.out.println("Khong phai ma tran vuong");
+        }
+        return sum;
+    }
 
+    //Tính tổng nữa trên đường chéo phụ
+    private static int tongNuaTrenPhu(int[][] a) {
+        int sum = 0;
+        int r = a.length;
+        int c = a[0].length;
+        if (r == c) {
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) {
+                    if ((i + j) < (r - 1)) {
+                        sum += a[i][j];
+                    }
+                }
+            }
+        } else {
+            System.out.println("Khong phai ma tran vuong");
+        }
+        return sum;
+    }
+
+    //Tính tổng nữa trên đường chéo chính
+    public static int tongNuaTrenChinh(int[][] a) {
+        int sum = 0;
+        int r = a.length;
+        int c = a[0].length;
+        if (r == c) {
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) {
+                    if (i < j) {
+                        sum += a[i][j];
+                    }
+                }
+            }
+        } else {
+            System.out.println("Khong phai ma tran vuong");
+        }
+        return sum;
+    }
+
+    //Tính tổng nữa dưới đường chéo chính
+    public static int tongNuaDuoiChinh(int[][] a) {
+        int sum = 0;
+        int r = a.length;
+        int c = a[0].length;
+        if (r == c) {
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) {
+                    if (i > j) {
+                        sum += a[i][j];
+                    }
+                }
+            }
+        } else {
+            System.out.println("Khong phai ma tran vuong");
+        }
+        return sum;
+    }
+
+    //Tinhs tổng đường chéo phụ
+    public static int tongDuongCheoPhu(int[][] a) {
+        int sum = 0;
+        int r = a.length;
+        int c = a[0].length;
+        if (r == c) {
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) {
+                    if ((i + j) == (r - 1)) {
+                        sum += a[i][j];
+                    }
                 }
             }
         } else {
@@ -82,8 +176,9 @@ public class MatrixArray {
         }
         return sum;
     }
+
     //Tinhs tổng đường chéo chính
-    public static int sumDuongCheoChinh(int[][] a) {
+    public static int tongDuongCheoChinh(int[][] a) {
         int sum = 0;
         int r = a.length;
         int c = a[0].length;
@@ -104,12 +199,16 @@ public class MatrixArray {
     //Tính tổng phần tử trên cot X
     public static int sumColX(int[][] a, int x) {
         int sum = 0;
-        for (int i = 0, r = a.length; i < r; i++) {
-            for (int j = 0, c = a[0].length; j < c; j++) {
-                if (j == x) {
-                    sum += a[i][j];
+        if (x > 0) {
+            for (int i = 0, r = a.length; i < r; i++) {
+                for (int j = 0, c = a[0].length; j < c; j++) {
+                    if (j == x) {
+                        sum += a[i][j];
+                    }
                 }
             }
+        } else {
+            System.out.println("Cot X la so duong");
         }
         return sum;
     }
@@ -117,12 +216,16 @@ public class MatrixArray {
     //Tính tổng phần tử trên dong X
     public static int sumRowX(int[][] a, int x) {
         int sum = 0;
-        for (int i = 0, r = a.length; i < r; i++) {
-            for (int j = 0, c = a[0].length; j < c; j++) {
-                if (i == x) {
-                    sum += a[i][j];
+        if (x > 0) {
+            for (int i = 0, r = a.length; i < r; i++) {
+                for (int j = 0, c = a[0].length; j < c; j++) {
+                    if (i == x) {
+                        sum += a[i][j];
+                    }
                 }
             }
+        } else {
+            System.out.println("Cot X la so duong");
         }
         return sum;
     }
