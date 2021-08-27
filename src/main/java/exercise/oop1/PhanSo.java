@@ -20,131 +20,125 @@ public class PhanSo {
         this._mauSo = mauSo;
     }
 
-    //khoi tao phan so rong
     public PhanSo() {
+    }
+
+    public int get_tuSo() {
+        return _tuSo;
+    }
+
+    public int get_mauSo() {
+        return _mauSo;
     }
 
     //Xuat phan so
     public void print() {
-        if (_tuSo == _mauSo) {
+        if (this._tuSo == this._mauSo) {
             System.out.println(1);
         } else {
-            System.out.format("%d/%d", _tuSo, _mauSo);
+            System.out.format("%d/%d", this._tuSo, this._mauSo);
+        }
+    }
+
+    @Override
+    public String toString() {
+        if (this._tuSo == this._mauSo) {
+            return 1 + "";
+        } else {
+            return String.format("%d/%d", this._tuSo, this._mauSo);
         }
     }
 
     //So sánh 2 phan so
-    public void isBigger(PhanSo ps) {
-        PhanSo thisPS = new PhanSo(this._tuSo, this._mauSo);
-        thisPS = thisPS.truPhanSo(ps);
-        if (thisPS.ktPhanSoAm()) {
-            System.out.format("%d/%d < %d/%d", this._tuSo, this._mauSo, ps._tuSo, ps._mauSo);
-        } else if (!thisPS.ktPhanSoAm()) {
-            System.out.format("%d/%d > %d/%d", this._tuSo, this._mauSo, ps._tuSo, ps._mauSo);
-        } else {
-            System.out.format("%d/%d = %d/%d", this._tuSo, this._mauSo, ps._tuSo, ps._mauSo);
+    public int compareTo(PhanSo ps) {
+        long tmp1 = (long) this._tuSo * ps._mauSo;
+        long tmp2 = (long) ps._tuSo * this._mauSo;
+        if (tmp1 > tmp2) {
+            return 1;//this > ps
+        } else if (tmp1 < tmp2) {
+            return -1;// this < ps
         }
+        return 0; //this = ps
     }
 
     //Kiem tra phan so am dương
-    public boolean ktPhanSoAm() {
-        if (this._tuSo > 0 && this._mauSo > 0) {
+    public boolean isNegative() {
+        if (this._tuSo == 0)
+            return false;
+
+        if (this._tuSo > 0 && this._mauSo > 0)
+            return false;
+
+        if (this._tuSo < 0 && this._mauSo < 0)
+            return false;
+
+        return true;
+    }
+
+    //UCLN
+    private static int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        } else {
+            return gcd(b, a % b);
+        }
+    }
+
+    //Kiem tra phan so toi gian nhan vao string
+    public boolean isReducible() {
+        int gcd = gcd(Math.abs(this._tuSo), Math.abs(this._mauSo));
+        if (gcd == 1) {
             return false;
         }
         return true;
     }
 
-    //Quy dong 2 phan so
-    public PhanSo[] quyDong2PS(PhanSo ps1) {
-        PhanSo newPS1 = new PhanSo();
-        PhanSo newPS2 = new PhanSo();
-        if (this._mauSo % ps1._mauSo == 0) {
-            int temp = this._mauSo / ps1._mauSo;
-            newPS1._tuSo = ps1._tuSo * temp;
-            newPS1._mauSo = ps1._mauSo * temp;
-            newPS2._tuSo = this._tuSo;
-            newPS2._mauSo = this._mauSo;
-        } else {
-            newPS1._tuSo = ps1._tuSo * this._mauSo;
-            newPS1._mauSo = ps1._mauSo * this._mauSo;
-            newPS2._tuSo = this._tuSo * ps1._mauSo;
-            newPS2._mauSo = this._mauSo * ps1._mauSo;
-        }
-
-        PhanSo[] arrPS = new PhanSo[]{newPS1.rutGon(), newPS2, rutGon()};
-        return arrPS;
-    }
-
-    //UCLN
-    public int UCLN(int a, int b) {
-        if (b == 0) {
-            return a;
-        } else {
-            return UCLN(b, a % b);
-        }
-    }
-
-    //Kiem tra phan so toi gian nhan vao string
-    public boolean ktToiGian() {
-        PhanSo ps = new PhanSo(this._tuSo, this._mauSo);
-        for (int i = 2; i <= ps._tuSo && i <= ps._mauSo; i++) {
-            if (ps._tuSo == ps._mauSo) {
-                return true;
-            } else if ((ps._tuSo % i == 0) && (ps._mauSo % i == 0)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     //Rut gon phan so
-    public PhanSo rutGon() {
-        PhanSo newPS = new PhanSo();
-        int ucln = UCLN(this._tuSo, this._mauSo);
-        newPS._tuSo = this._tuSo / ucln;
-        newPS._mauSo = this._mauSo / ucln;
-        return newPS;
+    public void rutGon() {
+        int gcd = gcd(Math.abs(this._tuSo), Math.abs(this._mauSo));//tru ra so am sẽ bị loi nên dể trij tuyệt đối
+        this._tuSo = this._tuSo / gcd;
+        this._mauSo = this._mauSo / gcd;
     }
 
     //Cong phan so
-    public PhanSo congPhanSo(PhanSo ps2) {
-        PhanSo ps1 = new PhanSo();
+    public void plus(PhanSo ps2) {
         if (this._mauSo == ps2._mauSo) {
-            ps1._tuSo = this._tuSo + ps2._tuSo;
-            ps1._mauSo = ps2._mauSo;
+            this._tuSo = this._tuSo + ps2._tuSo;
+            this._mauSo = ps2._mauSo;
         } else {
-            ps1._tuSo = (this._tuSo * ps2._mauSo) + (ps2._tuSo * this._mauSo);
-            ps1._mauSo = this._mauSo * ps2._mauSo;
+            this._tuSo = (this._tuSo * ps2._mauSo) + (ps2._tuSo * this._mauSo);
+            this._mauSo = this._mauSo * ps2._mauSo;
         }
-        return ps1;
     }
 
     //Tru phan so
-    public PhanSo truPhanSo(PhanSo ps2) {
-        PhanSo ps1 = new PhanSo();
+    public void sub(PhanSo ps2) {
         if (this._mauSo == ps2._mauSo) {
-            ps1._tuSo = this._tuSo - ps2._tuSo;
-            ps1._mauSo = ps2._mauSo;
+            this._tuSo = this._tuSo - ps2._tuSo;
+            this._mauSo = ps2._mauSo;
         } else {
-            ps1._tuSo = (this._tuSo * ps2._mauSo) - (ps2._tuSo * this._mauSo);
-            ps1._mauSo = this._mauSo * ps2._mauSo;
+            this._tuSo = (this._tuSo * ps2._mauSo) - (ps2._tuSo * this._mauSo);
+            this._mauSo = this._mauSo * ps2._mauSo;
         }
-        return ps1;
     }
 
     //tich phan so
-    public PhanSo nhanPhanSo(PhanSo ps) {
-        PhanSo ps1 = new PhanSo();
-        ps1._tuSo = this._tuSo * ps._tuSo;
-        ps1._mauSo = this._mauSo * ps._mauSo;
-        return ps1;
+    public void mul(PhanSo ps) {
+        this._tuSo = this._tuSo * ps._tuSo;
+        this._mauSo = this._mauSo * ps._mauSo;
     }
 
     //thuong phan so
-    public PhanSo chiaPhanSo(PhanSo ps) {
-        PhanSo ps1 = new PhanSo();
-        ps1._tuSo = this._tuSo * ps._mauSo;
-        ps1._mauSo = this._mauSo * ps._tuSo;
-        return ps1;
+    public void div(PhanSo ps) {
+        this._tuSo = this._tuSo * ps._mauSo;
+        this._mauSo = this._mauSo * ps._tuSo;
+    }
+
+    public static PhanSo fromString(String str) {
+        String[] parts = str.split("/");
+        PhanSo ps = new PhanSo();
+        ps._tuSo = Integer.parseInt(parts[0]);
+        ps._mauSo = Integer.parseInt(parts[1]);
+        return ps;
     }
 }
